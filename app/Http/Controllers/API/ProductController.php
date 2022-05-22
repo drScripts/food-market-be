@@ -32,8 +32,6 @@ class ProductController extends Controller
 
             if ($request->query('type')) {
                 $query = $query->where('type', $request->query('type'));
-            } else {
-                $query = $query->where('type', 'none');
             }
 
 
