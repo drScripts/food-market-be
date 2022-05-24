@@ -88,7 +88,7 @@ class ProductController extends Controller
                 'rating' => $request->rating ?? 0,
                 'description' => $request->description,
                 'stock' => $request->stock,
-                'type' => $request->type,
+                'type' => $request->type ?? "none",
             ];
 
             $cloudinary = new Cloudinary();
