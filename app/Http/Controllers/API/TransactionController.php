@@ -21,7 +21,7 @@ class TransactionController extends Controller
         $login_user = $request->attributes->get('user');
 
 
-        $query = Transaction::with(['user', 'product']);
+        $query = Transaction::with(['user.profile', 'product']);
 
         $query = $query->where('user_id', $login_user);
 
@@ -105,6 +105,8 @@ class TransactionController extends Controller
             $transaction->payment_token = $midtrans['token'];
 
             $transaction->save();
+
+            $transaction = Transaction::with(['user.profile', 'product'])->find($transaction->id);
 
             return ResponseFormatter::success($transaction, 'created', 201);
         } catch (Exception $err) {
