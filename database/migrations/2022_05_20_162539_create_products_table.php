@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->integer('price')->nullable();
-            $table->string('ingredients')->nullable();
-            $table->double('rating')->default(0)->nullable();
-            $table->text('description')->nullable();
-            $table->integer('stock')->default(0)->nullable();
-            $table->text('picture')->nullable();
-            $table->text('picture_public_id')->nullable();
-            $table->enum('type', ['new_taste', 'recommended', 'popular', 'none'])->default('none')->nullable();
+            $table->string('name');
+            $table->integer('price');
+            $table->string('ingredients');
+            $table->double('rating')->default(0);
+            $table->text('description');
+            $table->integer('stock')->default(0);
+            $table->text('picture');
+            $table->text('picture_public_id');
+            $table->enum('type', ['new_taste', 'recommended', 'popular', 'none'])->default('none');
             $table->timestamps();
             $table->softDeletes();
         });
