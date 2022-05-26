@@ -22,10 +22,9 @@ Route::prefix('users')->group(function () {
     Route::post('/register', [UserController::class, 'register']);
     Route::middleware('jwt')->group(function () {
         Route::get("/profile", [UserController::class, 'profile']);
+        Route::patch('/profile', [UserController::class, 'update']);
     });
 });
-
-Route::middleware('jwt')->patch("/users/profile", [UserController::class, 'update']);
 
 Route::middleware('jwt')->prefix("products")->group(function () {
     Route::get('/', [ProductController::class, 'index']);
