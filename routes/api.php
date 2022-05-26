@@ -21,10 +21,11 @@ Route::prefix('users')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register', [UserController::class, 'register']);
     Route::middleware('jwt')->group(function () {
-        Route::patch('/', [UserController::class, 'update']);
         Route::get("/profile", [UserController::class, 'profile']);
     });
 });
+
+Route::middleware('jwt')->patch("/users/profile", [UserController::class, 'update']);
 
 Route::middleware('jwt')->prefix("products")->group(function () {
     Route::get('/', [ProductController::class, 'index']);
